@@ -21,12 +21,12 @@ public class Main {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        permutation(0);
+        permutation(0, 0);
         System.out.println(ans);
     }
-    private static void permutation(int depth){
+    private static void permutation(int depth,int start){
         if(depth == n / 2){
-            //System.out.println(Arrays.toString(visited));
+          //  System.out.println(Arrays.toString(visited));
             int cnt1 = 0;
             int cnt2 = 0;
             for(int j = 0; j < n; j++){
@@ -38,10 +38,10 @@ public class Main {
             return;
         }
 
-        for(int i = depth ; i < n; i++){
+        for(int i = start ; i < n; i++){
             if(visited[i] == false){
             visited[i] = true;
-            permutation(depth + 1);
+            permutation(depth + 1 ,i);
             visited[i] = false;
             }
         }
