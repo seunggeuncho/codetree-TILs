@@ -85,6 +85,7 @@ public class Main {
                 ans += val;
             }
             System.out.print(ans + " ");
+//            System.out.println("###########################################");
         }
     }
 
@@ -108,15 +109,15 @@ public class Main {
         Queue<int[]> que = new ArrayDeque<>();
         que.add(new int[] {r,c});
         int cnt = 0;
+        visited[r][c] = true;
         while(!que.isEmpty()) {
             int[] cur = que.poll();
-//            System.out.println("check_num>>>>>>>> cur[0] : " + cur[0] + " cur[1] : " + cur[1] + " val : " + i + " cnt : " + cnt);
-            visited[cur[0]][cur[1]] = true;
             cnt++;
             for(int j = 0; j < 4; j++) {
                 int t_r = dir[j][0] + cur[0];
                 int t_c = dir[j][1] + cur[1];
                 if(0 > t_r || t_r >= 5 || 0 > t_c || t_c >=5 || map[t_r][t_c] != i || visited[t_r][t_c])continue;
+                visited[t_r][t_c] = true;
                 que.add(new int[]{t_r,t_c});
             }
         }
@@ -169,6 +170,7 @@ public class Main {
                 if (tmp.size() >= 3) {
                     total += tmp.size();
                     for (int[] cur : tmp) {
+//                        System.out.println("r c " + r + " " + c + " " + "cur[0] : " + cur[0] + "Cur[1] : " + cur[1]);
                         que.add(cur);
                     }
                 }
@@ -192,14 +194,15 @@ public class Main {
         que.add(new int[] {r,c});
         List<int[]> lst = new ArrayList<>();
         lst.add(new int[]{r,c});
+        visited[r][c] = true;
         while(!que.isEmpty()) {
             int[] cur = que.poll();
-            visited[cur[0]][cur[1]] = true;
-
             for(int j = 0; j < 4; j++) {
                 int t_r = dir[j][0] + cur[0];
                 int t_c = dir[j][1] + cur[1];
                 if(0 > t_r || t_r >= 5 || 0 > t_c || t_c >=5 || map[t_r][t_c] != i || visited[t_r][t_c])continue;
+                visited[t_r][t_c]=true;
+//                System.out.println("check_lst>>>>>>" + "cur[0] : " + t_r + " cur[1] : " + t_c);
                 que.add(new int[]{t_r,t_c});
                 lst.add(new int[]{t_r,t_c});
             }
