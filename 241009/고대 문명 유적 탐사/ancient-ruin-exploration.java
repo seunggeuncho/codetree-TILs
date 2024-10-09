@@ -49,6 +49,21 @@ public class Main {
                                     max_col = col;
                                     max_count = num;
                                     max_rotat = i;
+                                } else if(max_rotat == i){
+                                    if(max_col > col){
+                                        max_row = row;
+                                        max_col = col;
+                                        max_count = num;
+                                        max_rotat = i;
+                                    } else if(max_col == col){
+                                        if(max_row > row){
+                                            max_row = row;
+                                            max_col = col;
+                                            max_count = num;
+                                            max_rotat = i;
+                                        }
+
+                                    }
                                 }
                             }
                         }
